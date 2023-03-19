@@ -1,0 +1,88 @@
+% Auriga theme
+% https://github.com/anishathalye/auriga
+
+\documentclass[14pt,aspectratio=169]{beamer}
+\usepackage{pgfpages}
+\usepackage{fancyvrb}
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+% Notes
+%\ifnotes
+%\setbeamertemplate{note page}[plain]
+%\setbeameroption{show notes on second screen=right}
+%\fi
+
+\usetheme{auriga}
+\usecolortheme{auriga}
+
+% Header line
+\useoutertheme[subsection=false]{miniframes}
+
+% Footer line
+\makeatletter
+\def\ps@navigation@titlepage{%
+  \setbeamertemplate{footline}{}
+  \@nameuse{ps@navigation}
+}
+\addtobeamertemplate{title page}{\thispagestyle{navigation@titlepage}}{}
+\pretocmd{\tableofcontents}{\thispagestyle{navigation@titlepage}}{}{}
+\makeatother
+
+% Section Slides
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+% adjust caption size
+\newcommand\mycaption[1]{{\footnotesize #1}}
+
+% define some colors for a consistent theme across slides
+\definecolor{red}{RGB}{181, 23, 0}
+\definecolor{blue}{RGB}{0, 118, 186}
+\definecolor{gray}{RGB}{146, 146, 146}
+
+% title
+\title{Heterogeneity-Robust Spatial Synthetic Controls}
+\author{Daniel C Posmik \inst{1}}
+\institute[shortinst]{\inst{1} Becker Friedman Institute for Economic Research; University of Chicago \\ E-Mail: posmikdc@uchicago.edu}
+
+
+% title page
+\begin{document}
+
+{
+  % rather than use the frame options [noframenumbering,plain], we make the
+  % color match, so that the indicated page numbers match PDF page numbers
+  \setbeamercolor{page number in head/foot}{fg=background canvas.bg}
+  \begin{frame}
+    \titlepage
+  \end{frame}
+}
+
+% body
+
+\input{slides/toc}
+\input{slides/ch.intro}
+\input{slides/ch.ssc}
+\input{slides/ch.teh}
+\input{slides/ch.application}
+\input{slides/ch.discussion}
+
+% Appendix----------------------------------------------------------------
+\appendix
+
+% References--------------------------------------------------------------
+\begin{frame}[allowframebreaks]{References}
+  \bibliography{main.bib}
+  \bibliographystyle{apalike}
+\end{frame}
+
+\end{document}
