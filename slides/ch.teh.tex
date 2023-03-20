@@ -95,24 +95,6 @@ The set of treatment effects $D$ at time $t_i$ may be spatially heterogeneous:
   \end{columns}
 \end{frame}
 
-\begin{frame}{The Clustering Problem}
-
-\begin{itemize}
-    \item How do we report these heterogeneous treatment effects?
-    \vspace{-7pt}
-\begin{itemize}
-    \item Individual Treatment Effect: We report $\delta_{i,j}$ for $\forall i,j$.
-    \item Average Treatment Effect: We report $\frac{1}{n}*\sum(\delta_{i,j})$ $\forall i,j$. 
-\end{itemize}
-    \vspace{-7pt}
-    \item The options are unrealistic and uninformative, respectively. Therefore, can we find a good middle ground?
-\end{itemize}
-
-\begin{center}
-    Formally: We are looking to report the average of k subsets of $D$, where $1 < k < n$ in a plane with $n$ grids. 
-\end{center}
-\end{frame}
-
 \begin{frame}{A Solution?}
 Rather than pre-define the reporting veracity (e.g., zip code), a clustering approach may allow the data to tell the whole story. 
 \vspace{5pt}
