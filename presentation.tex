@@ -1,11 +1,12 @@
 % Auriga theme
 % https://github.com/anishathalye/auriga
 
-\documentclass[14pt,aspectratio=169]{beamer}
+\documentclass[11pt,aspectratio=169]{beamer}
 \usepackage{pgfpages}
 \usepackage{fancyvrb}
 \usepackage{tikz}
 \usepackage{pgfplots}
+\usepackage{amsmath}
 
 % Notes
 %\ifnotes
@@ -50,7 +51,7 @@
 \definecolor{gray}{RGB}{146, 146, 146}
 
 % title
-\title{Heterogeneity-Robust Spatial Synthetic Controls}
+\title{Causal Inference \\with Heterogeneity-Robust Spatial \\Synthetic Controls}
 \author{Daniel C Posmik \inst{1}}
 \institute[shortinst]{\inst{1} Becker Friedman Institute for Economic Research; University of Chicago \\ E-Mail: posmikdc@uchicago.edu}
 
@@ -71,10 +72,10 @@
 
 \input{slides/toc}
 \input{slides/ch.intro}
-\input{slides/ch.ssc}
-\input{slides/ch.teh}
+\input{slides/ch.synthetic}
+\input{slides/ch.comparison}
+\input{slides/ch.didestimator}
 \input{slides/ch.application}
-\input{slides/ch.discussion}
 
 % Appendix----------------------------------------------------------------
 \appendix

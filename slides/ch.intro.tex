@@ -1,13 +1,13 @@
-\section{The Idea}
+\section{Motivation}
 \begin{frame}{Disclaimer}
     \begin{itemize}
-        \item{This is a collection of preliminary ideas.}
-        \item{The purpose of this presentation is to receive constructive criticism on many of these thoughts!}
-        \item{My goal is to develop this project into a paper in graduate school!}
+        \item{This is a collection of preliminary, high-level ideas.}
+        \item{The purpose of this presentation is to receive constructive criticism!}
+        \item{My goal is to develop this project into a proper study in graduate school!}
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Conventional Synthetic Controls}
+\begin{frame}{Synthetic Controls \& DiD: A Review}
   \begin{columns}
     \begin{column}{0.58\linewidth}
         \begin{itemize}
@@ -16,6 +16,10 @@
             \item{Construct synthetic control units via pre-treatment/ exogenous characteristics}
             \vspace{-7pt}
             \item{Relies on parallel trends assumption}
+            \vspace{-7pt}
+            \item{Causal estimator can be recovered in DiD, see Arkhangelsky et al, 2021}
+            \vspace{-7pt}
+            \item{\textbf{But}: This does not account for treatment effect heterogeneity - No insight into granular treatment responses due to spatial aggregation!}
         \end{itemize}
     \end{column}
     \begin{column}{0.5\linewidth}
@@ -27,91 +31,21 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{A Three-Dimensional Extension}
+\begin{frame}{Research Goals}
 
-\begin{itemize}
-\item{\textbf{Hypothesis}: The GDP effect of German reunification is not uniform across every state}
-    \begin{itemize}
-        \item{Treatment effect heterogeneity?}
-        \vspace{-5pt}
-        \item{Complex spatial relationships?}
-        \vspace{-5pt}
-        \item{Information loss during data aggregation?}
-    \end{itemize}
-\end{itemize}
-
-\hfill
-
-\begin{itemize}
-    \item{Spatial Synthetic Controls (SSC) adds a spatial dimension to the \textit{conventional} Synthetic Controls (SC) method}
-    \begin{itemize}
-        \item{Disaggregation of information in the spatial dimension}
-        \vspace{-5pt}
-        \item{Refine the average (ATE) to conditional (CATE) treatment effects}
-        \vspace{-5pt}
-        \item{Causal inference in high-dimensional space}
-    \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{A Three-Dimensional Extension: Visualization}
-
-Treatment occurs at $t_{i=0}$. Let us consider three scenarios:
+I am interested in measuring the treatment effect $\tau_{it}(x)$ at location $i$ and time $t$. Formally: \\ 
+\vspace{3pt}
+$\tau_{it}(x) = \E [Y_{it}^{(1)} - Y_{it}^{(0)} | X_{it} = x]$ \\
+\vspace{3pt}
+where the $Y_{it}^{(1)}$ is the observed treated outcome, $Y_{it}^{(0)}$ denotes the unobserved untreated counterfactual. Let $X_{it}$ denote a set of covariates and $Z_{it}$ the treatment status, where $Z_{it} \in [0,1]^{d}$. \\
 \vspace{5pt}
-
-  \begin{columns}
-    % Split 1
-    \begin{column}{0.33\linewidth}
-      \begin{tikzpicture}[scale=0.50]
-      \begin{axis} [
-        title = {$t_{i<0}$},
-        xtick = {0,90,...,360},
-        ytick = {90,180,...,360},
-        xlabel = $Lat$, ylabel = $Long$,
-        ticklabel style = {font = \scriptsize},
-	grid]
-        \addplot3 [red, domain=0:360, samples=60] 
-        	{ sin(x)*sin(y) };
-        \end{axis}
-        \end{tikzpicture}
-        \centering{\footnotesize{Pre-treatment, no treatment response}}
-    \end{column}
-    % Split 2
-    \begin{column}{0.33\linewidth}
-      \begin{tikzpicture}[scale=0.50]
-      \begin{axis} [
-        title = {$t_{i>0}$},
-        xtick = {0,90,...,360},
-        ytick = {90,180,...,360},
-        xlabel = $Lat$, ylabel = $Long$,
-        ticklabel style = {font = \scriptsize},
-	grid]
-        \addplot3 [blue, domain=0:360, samples=60] 
-        	{ sin(x)*sin(y) };
-        \addplot3 [red, domain=0:360, samples=60] 
-        	{ sin(x)*sin(y) + 1.5 };
-        \end{axis}
-        \end{tikzpicture}
-        \centering{\footnotesize{Post-treatment, homogeneous response}}
-    \end{column}
-    % Split 3
-    \begin{column}{0.33\linewidth}
-      \begin{tikzpicture}[scale=0.50]
-      \begin{axis} [
-        title = {$t_{i>>0}$},
-        xtick = {0,90,...,360},
-        ytick = {90,180,...,360},
-        xlabel = $Lat$, ylabel = $Long$,
-        ticklabel style = {font = \scriptsize},
-	grid]
-        \addplot3 [blue, domain=0:360, samples=60] 
-        	{ sin(x)*sin(y) };
-        \addplot3 [red, domain=0:360, samples=60] 
-        	{ sin(0.5*x)*3*sin(y) + 3.5 };
-        \end{axis}
-        \end{tikzpicture}
-        \centering{\footnotesize{Post-treatment, heterogeneous response}}
-    \end{column}
-  \end{columns}
-
+My research goals are:\\
+\vspace{3pt}
+\begin{itemize}
+    \item Proposing a method for counterfactual prediction
+    \vspace{-7pt}
+    \item Matching comparison units to any treated unit $Y_{it}^{(1)}$
+    \vspace{-7pt}
+    \item Developing a difference-in-differences estimator
+\end{itemize}
 \end{frame}

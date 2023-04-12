@@ -10,7 +10,7 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Reporting Heterogeneous Treatment Effects}
+%\begin{frame}{Reporting Heterogeneous Treatment Effects}
 
 The set of treatment effects $D$ at time $t_i$ may be spatially heterogeneous:  
 \vspace{5pt}
@@ -116,4 +116,36 @@ Rather than pre-define the reporting veracity (e.g., zip code), a clustering app
         \mycaption{High-dimensional Clustering}
     \end{column}
   \end{columns}
+\end{frame}
+
+\begin{frame}{Solutions?}
+
+    \begin{table}[htbp]
+    \centering
+    \begin{tabular}{|p{0.3\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
+    \hline
+    \textbf{Machine Learning} & \textbf{Non-Parametric} & \textbf{Dimensionality Reduction} \\
+    \hline
+    Strong predictive performance in non-linear relationships & Robust to violations of functional form assumptions & Absorb temporal dimension into fixed effect. \
+    \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}{Inspiration from Literature}
+
+\begin{itemize}
+    \item \cite{pouliot2022}
+      \begin{itemize}
+        \item Krig-and-regress method for spatially misaligned data
+        \item Introduces Kriging (prediction) method into spatial econometrics
+        \item Relevant discussion on interpolation, aggregation, and spatial filtering techniques
+      \end{itemize}
+    \vspace{-7pt}
+    \item \cite{serraburieletal2020}
+      \begin{itemize}
+        \item Estimate the effects of wildfires on vegetation
+        \item An application of spatial synthetic controls, though treatment is discrete and units are static
+        \item Use of Nuclear Norm Matrix Completion Method (see, \cite{athey2021}
+      \end{itemize}
+  \end{itemize}
 \end{frame}
